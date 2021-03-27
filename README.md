@@ -20,11 +20,12 @@ Note that some exception/error cases are not covered in unit-testing due to diff
 
 **Manual Test:**
 5 sets of accounts are given below as test accounts for manual testing. Every account has the same password = '123'.
-- 1. CNetID: 'test_student'
-- 2. CNetID: 'test_faculty'
-- 3. CNetID: 'test_sta'
-- 4. CNetID: 'test_nsta'
-- 5. CNetID: 'random_stud'
+1. CNetID: 'test_student'
+2. CNetID: 'test_faculty'
+3. CNetID: 'test_sta'
+4. CNetID: 'test_nsta'
+5. CNetID: 'random_stud'  
+  
 Other account information can be found in MongoDB, but are not recommended for manual testing. The reason being any data modification (updating new grades, etc) can break the unit test cases.
 Note that "gradesheet get" will create a txt file in the directory of "Final Project", and that "gradesheet post" will read a file from the same directory.
 
@@ -42,113 +43,113 @@ MySQL - A file named "sqlData.sql" can be found. To import this, run the script 
 MongoDB - the database is named "registrar", in which there is only one collection called "userlogin".
 Use the following commands in the mongo shell to inject all data needed.
 
-db.userlogin.insert({"cNetID":"rpchiu", "password":"123", "role":"student", "name":"Ryan", "id" : NumberInt(1)})
-db.userlogin.insert({"cNetID":"mark", "password":"123", "role":"faculty", "name":"Mark", "id" : NumberInt(2)})
-db.userlogin.insert({"cNetID":"johnoop", "password":"123", "role":"nonStudentTA", "name":"John", "id" : NumberInt(3)})
-db.userlogin.insert({"cNetID":"jeffoop", "password":"123", "role":"studentTA", "name":"Jeff", "id" : NumberInt(4)})
-db.userlogin.insert({"cNetID":"amyq", "password":"123", "role":"student", "name":"Amy", "id" : NumberInt(6)})
-db.userlogin.insert({"cNetID":"bob", "password":"123", "role":"student", "name":"Bob", "id" : NumberInt(7)})
-db.userlogin.insert({"cNetID":"maryk", "password":"123", "role":"studentTA", "name":"Mary", "id" : NumberInt(8)})
-db.userlogin.insert({"cNetID":"test_student", "password":"123", "role":"student", "id" : NumberInt(10), "name":"Ryan Chiu"})
-db.userlogin.insert({"cNetID":"test_faculty", "password":"123", "role":"faculty", "id" : NumberInt(11), "name":"Mark Shacklette"})
-db.userlogin.insert({"cNetID":"test_nsta", "password":"123", "role":"nonStudentTA", "id" : NumberInt(12), "name":"John Hadidian-Baugher"})
-db.userlogin.insert({"cNetID":"test_sta", "password":"123", "role":"studentTA", "id" : NumberInt(13), "name":"Alan Salkanović"})
-db.userlogin.insert({"cNetID":"random_stud", "password":"123", "role":"student", "id" : NumberInt(14), "name":"John Doe"})
+db.userlogin.insert({"cNetID":"rpchiu", "password":"123", "role":"student", "name":"Ryan", "id" : NumberInt(1)})  
+db.userlogin.insert({"cNetID":"mark", "password":"123", "role":"faculty", "name":"Mark", "id" : NumberInt(2)})  
+db.userlogin.insert({"cNetID":"johnoop", "password":"123", "role":"nonStudentTA", "name":"John", "id" : NumberInt(3)})  
+db.userlogin.insert({"cNetID":"jeffoop", "password":"123", "role":"studentTA", "name":"Jeff", "id" : NumberInt(4)})  
+db.userlogin.insert({"cNetID":"amyq", "password":"123", "role":"student", "name":"Amy", "id" : NumberInt(6)})  
+db.userlogin.insert({"cNetID":"bob", "password":"123", "role":"student", "name":"Bob", "id" : NumberInt(7)})  
+db.userlogin.insert({"cNetID":"maryk", "password":"123", "role":"studentTA", "name":"Mary", "id" : NumberInt(8)})  
+db.userlogin.insert({"cNetID":"test_student", "password":"123", "role":"student", "id" : NumberInt(10), "name":"Ryan Chiu"})  
+db.userlogin.insert({"cNetID":"test_faculty", "password":"123", "role":"faculty", "id" : NumberInt(11), "name":"Mark Shacklette"})  
+db.userlogin.insert({"cNetID":"test_nsta", "password":"123", "role":"nonStudentTA", "id" : NumberInt(12), "name":"John Hadidian-Baugher"})  
+db.userlogin.insert({"cNetID":"test_sta", "password":"123", "role":"studentTA", "id" : NumberInt(13), "name":"Alan Salkanović"})  
+db.userlogin.insert({"cNetID":"random_stud", "password":"123", "role":"student", "id" : NumberInt(14), "name":"John Doe"})  
 
-After insertion, data should look like the following:
-{
-	"_id" : ObjectId("6048d750a795c69af0a96733"),
-	"cNetID" : "rpchiu",
-	"password" : "123",
-	"role" : "student",
-	"id" : 1,
-	"name" : "Ryan"
-}
-{
-	"_id" : ObjectId("6048f95a3bab3e170212c3ca"),
-	"cNetID" : "mark",
-	"password" : "123",
-	"role" : "faculty",
-	"name" : "Mark",
-	"id" : 2
-}
-{
-	"_id" : ObjectId("6048f9933bab3e170212c3cb"),
-	"cNetID" : "johnoop",
-	"password" : "123",
-	"role" : "nonStudentTA",
-	"name" : "John",
-	"id" : 3
-}
-{
-	"_id" : ObjectId("6048f9ab3bab3e170212c3cc"),
-	"cNetID" : "jeffoop",
-	"password" : "123",
-	"role" : "studentTA",
-	"name" : "Jeff",
-	"id" : 4
-}
-{
-	"_id" : ObjectId("6048f9f63bab3e170212c3cd"),
-	"cNetID" : "amyq",
-	"password" : "123",
-	"role" : "student",
-	"name" : "Amy",
-	"id" : 6
-}
-{
-	"_id" : ObjectId("6048fa093bab3e170212c3ce"),
-	"cNetID" : "bob",
-	"password" : "123",
-	"role" : "student",
-	"name" : "Bob",
-	"id" : 7
-}
-{
-	"_id" : ObjectId("6048fa1c3bab3e170212c3cf"),
-	"cNetID" : "maryk",
-	"password" : "123",
-	"role" : "studentTA",
-	"name" : "Mary",
-	"id" : 8
-}
-{
-	"_id" : ObjectId("604b96d294c6cd9448768a82"),
-	"cNetID" : "test_student",
-	"password" : "123",
-	"role" : "student",
-	"id" : 10,
-	"name" : "Ryan Chiu"
-}
-{
-	"_id" : ObjectId("604b96e694c6cd9448768a83"),
-	"cNetID" : "test_faculty",
-	"password" : "123",
-	"role" : "faculty",
-	"id" : 11,
-	"name" : "Mark Shacklette"
-}
-{
-	"_id" : ObjectId("604b96f794c6cd9448768a84"),
-	"cNetID" : "test_nsta",
-	"password" : "123",
-	"role" : "nonStudentTA",
-	"id" : 12,
-	"name" : "John Hadidian-Baugher"
-}
-{
-	"_id" : ObjectId("604b970094c6cd9448768a85"),
-	"cNetID" : "test_sta",
-	"password" : "123",
-	"role" : "studentTA",
-	"id" : 13,
-	"name" : "Alan Salkanović"
-}
-{
-	"_id" : ObjectId("604baa31c46f8477b26273e2"),
-	"cNetID" : "random_stud",
-	"password" : "123",
-	"role" : "student",
-	"id" : 14,
-	"name" : "John Doe"
-}
+After insertion, data should look like the following:  
+{  
+	"_id" : ObjectId("6048d750a795c69af0a96733"),  
+	"cNetID" : "rpchiu",  
+	"password" : "123",  
+	"role" : "student",  
+	"id" : 1,  
+	"name" : "Ryan"  
+}  
+{  
+	"_id" : ObjectId("6048f95a3bab3e170212c3ca"),  
+	"cNetID" : "mark",  
+	"password" : "123",  
+	"role" : "faculty",  
+	"name" : "Mark",  
+	"id" : 2  
+}  
+{  
+	"_id" : ObjectId("6048f9933bab3e170212c3cb"),  
+	"cNetID" : "johnoop",  
+	"password" : "123",  
+	"role" : "nonStudentTA",  
+	"name" : "John",  
+	"id" : 3  
+}  
+{  
+	"_id" : ObjectId("6048f9ab3bab3e170212c3cc"),  
+	"cNetID" : "jeffoop",  
+	"password" : "123",  
+	"role" : "studentTA",  
+	"name" : "Jeff",  
+	"id" : 4  
+}  
+{  
+	"_id" : ObjectId("6048f9f63bab3e170212c3cd"),  
+	"cNetID" : "amyq",  
+	"password" : "123",  
+	"role" : "student",  
+	"name" : "Amy",  
+	"id" : 6  
+}  
+{  
+	"_id" : ObjectId("6048fa093bab3e170212c3ce"),  
+	"cNetID" : "bob",  
+	"password" : "123",  
+	"role" : "student",  
+	"name" : "Bob",  
+	"id" : 7  
+}  
+{  
+	"_id" : ObjectId("6048fa1c3bab3e170212c3cf"),  
+	"cNetID" : "maryk",  
+	"password" : "123",  
+	"role" : "studentTA",  
+	"name" : "Mary",  
+	"id" : 8  
+}  
+{  
+	"_id" : ObjectId("604b96d294c6cd9448768a82"),  
+	"cNetID" : "test_student",  
+	"password" : "123",  
+	"role" : "student",   
+	"id" : 10,   
+	"name" : "Ryan Chiu"  
+}  
+{  
+	"_id" : ObjectId("604b96e694c6cd9448768a83"),  
+	"cNetID" : "test_faculty",  
+	"password" : "123",  
+	"role" : "faculty",  
+	"id" : 11,  
+	"name" : "Mark Shacklette"  
+}  
+{  
+	"_id" : ObjectId("604b96f794c6cd9448768a84"),  
+	"cNetID" : "test_nsta",  
+	"password" : "123",  
+	"role" : "nonStudentTA",  
+	"id" : 12,  
+	"name" : "John Hadidian-Baugher"  
+}  
+{  
+	"_id" : ObjectId("604b970094c6cd9448768a85"),  
+	"cNetID" : "test_sta",  
+	"password" : "123",  
+	"role" : "studentTA",  
+	"id" : 13,  
+	"name" : "Alan Salkanović"  
+}  
+{  
+	"_id" : ObjectId("604baa31c46f8477b26273e2"),  
+	"cNetID" : "random_stud",  
+	"password" : "123",  
+	"role" : "student",  
+	"id" : 14,  
+	"name" : "John Doe"  
+}  

@@ -1,4 +1,0 @@
-MPCS200 spring 2019
-ID 		 Grade 		 Name
-1 		 B 		 Ryan Chiu
-4 		 A 		 Jeff
